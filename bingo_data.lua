@@ -8,44 +8,44 @@ local slots = {
   {
     id = "english_mission",
     string = "English",
-    requires = {"Subtitles"},
+    requires = { "Subtitles" },
   },
   {
     id = "portuguese_mission",
     string = "Portuguese",
-    requires = {"Subtitles"},
+    requires = { "Subtitles" },
   },
   {
     id = "spanish_mission",
     string = "Spanish",
-    requires = {"Subtitles"},
+    requires = { "Subtitles" },
   },
   {
     id = "italian_mission",
     string = "Italian",
-    requires = {"Subtitles"},
+    requires = { "Subtitles" },
   },
   {
     id = "polish_mission",
     string = "Polish",
-    requires = {"Subtitles"},
+    requires = { "Subtitles" },
   },
 
   -- TTS
   {
     id = "male_tts_voice",
     string = "Male TTS",
-    requires = {"TTS"},
+    requires = { "TTS" },
   },
   {
     id = "female_tts_voice",
     string = "Female TTS",
-    requires = {"TTS"},
+    requires = { "TTS" },
   },
   {
     id = "brazilian_tts_voice",
     string = "Brazilian TTS",
-    requires = {"TTS"},
+    requires = { "TTS" },
   },
 
   -- Start
@@ -63,7 +63,7 @@ local slots = {
   },
   {
     id = "starts_interior",
-    string = "Interior",
+    string = "Start in Interior",
   },
   {
     id = "starts_grove_street",
@@ -95,7 +95,7 @@ local slots = {
     id = "starts_8am",
     string = "8:00 AM",
     helperText = "Default time of the day in DYOM",
-    requires = {"Time"},
+    requires = { "Time" },
   },
   {
     id = "starts_with_cutscene",
@@ -137,7 +137,7 @@ local slots = {
     id = "translated_mission",
     string = "Translated",
     helperText = "Mark this slot if your mission has been translated by the DYOM Rainbomizer auto-translate feature",
-    requires = {"Translator"},
+    requires = { "Translator" },
   },
   {
     id = "colors_in_title",
@@ -152,26 +152,27 @@ local slots = {
     string = '"The"',
   },
   {
-    id = "mission_name_dyom",
+    id = "dyom_in_title",
     string = '"DYOM"',
     helperText = 'The default mission title in DYOM is "DYOM"',
   },
   {
     id = "author_dyom",
     string = "by DYOM",
-    helperText = 'The default author name in DYOM is "DYOM". You can\'t change the author name in the settings after you confirm it',
+    helperText =
+    'The default author name in DYOM is "DYOM". You can\'t change the author name in the settings after you confirm it',
   },
   {
     id = "within_year",
     string = "Within year",
     helperText = string.format("This mission was published between %s, %d and %s, %d", month, year - 1, month, year),
-    requires = {"Info"},
+    requires = { "Info" },
   },
   {
     id = "ten_years_old",
     string = "10+ years",
     helperText = "DYOM's first version was released on November 30, 2008",
-    requires = {"Info"},
+    requires = { "Info" },
   },
   {
     id = "made_by_target13",
@@ -207,7 +208,8 @@ local slots = {
   {
     id = "mission_pack",
     string = "Mission pack",
-    helperText = "Since DYOM only supports up to 100 objectives per mission, many designers choose to separate their stories into several missions",
+    helperText =
+    "Since DYOM only supports up to 100 objectives per mission, many designers choose to separate their stories into several missions",
   },
 
   -- Mission theme
@@ -267,12 +269,13 @@ local slots = {
     id = "translate_fail",
     string = "Trans. fail",
     helperText = "Sometimes the auto-translate feature encounters a problem trying to translate the current mission",
-    requires = {"Translate"},
+    requires = { "Translate" },
   },
   {
     id = "requires_mods",
     string = "Needs mods",
-    helperText = "Some designers uses external mods to make more unique missions, and some of these mods can crash DYOM if you don't have them installed",
+    helperText =
+    "Some designers uses external mods to make more unique missions, and some of these mods can crash DYOM if you don't have them installed",
   },
   {
     id = "mission_crashes",
@@ -281,7 +284,8 @@ local slots = {
   {
     id = "rainbomizer_load_fail",
     string = "Load fail",
-    helperText = "Sometimes the Rainbomizer encounters a problem downloading the mission file, or maybe the author deleted it",
+    helperText =
+    "Sometimes the Rainbomizer encounters a problem downloading the mission file, or maybe the author deleted it",
   },
   {
     id = "ball_actor_bug",
@@ -291,7 +295,8 @@ local slots = {
   {
     id = "camera_bug",
     string = "Camera bug",
-    helperText = "The camera of a cutscene gets stuck during gameplay. This happens when you set an cutscene to follow/look at an actor as the last cutscene before the start of a gameplay.",
+    helperText =
+    "The camera of a cutscene gets stuck during gameplay. This happens when you set an cutscene to follow/look at an actor as the last cutscene before the start of a gameplay.",
   },
 
   -- Mission status
@@ -381,7 +386,8 @@ local slots = {
   {
     id = "wanted_enabled",
     string = "Wanted ON",
-    helperText = "Wanted stars are enabled by default since the first version of the mod. Many designers forget to disable it",
+    helperText =
+    "Wanted stars are enabled by default since the first version of the mod. Many designers forget to disable it",
   },
   {
     id = "wanted_disabled",
@@ -424,12 +430,14 @@ local slots = {
   {
     id = "kill_all_but_one",
     string = "Kill all->1",
-    helperText = 'The "Kill whole gang" option was only introduced in later versions of DYOM. That is why many older missions are designed that way',
+    helperText =
+    'The "Kill whole gang" option was only introduced in later versions of DYOM. That is why many older missions are designed that way',
   },
   {
     id = "kill_all_but_checkpoint",
     string = "Kill all->CP",
-    helperText = 'The "Kill whole gang" option was only introduced in later versions of DYOM. That is why many older missions are designed that way',
+    helperText =
+    'The "Kill whole gang" option was only introduced in later versions of DYOM. That is why many older missions are designed that way',
   },
   {
     id = "enemies_2500_health",
@@ -439,12 +447,14 @@ local slots = {
   {
     id = "headshots_off",
     string = "No headshots",
-    helperText = "Despite what many people think, the default value for headshots is ON. It is the designer's choice to disable the headshot for each spawned actor",
+    helperText =
+    "Despite what many people think, the default value for headshots is ON. It is the designer's choice to disable the headshot for each spawned actor",
   },
   {
     id = "headshots_inconsistency",
     string = "HS on/off",
-    helperText = "Despite what many people think, the default value for headshots is ON. It is the designer's choice to disable the headshot for each spawned actor",
+    helperText =
+    "Despite what many people think, the default value for headshots is ON. It is the designer's choice to disable the headshot for each spawned actor",
   },
   {
     id = "shirtless_zombie",
@@ -515,7 +525,8 @@ local slots = {
   {
     id = "actor_wrong_name",
     string = "Wrong name",
-    helperText = "An actor has a name that does not correspond to the original game character's name. Ex: Actor has Ryder skin but his name is Jorge",
+    helperText =
+    "An actor has a name that does not correspond to the original game character's name. Ex: Actor has Ryder skin but his name is Jorge",
   },
 
   -- Checkpoints
@@ -656,12 +667,14 @@ local slots = {
   {
     id = "to_be_continued",
     string = "TBC",
-    helperText = "TO BE CONTINUED (or something like that). Since DYOM only supports up to 100 objectives per mission, many designers choose to separate their stories into several missions",
+    helperText =
+    "TO BE CONTINUED (or something like that). Since DYOM only supports up to 100 objectives per mission, many designers choose to separate their stories into several missions",
   },
   {
     id = "parentheses_sounds",
     string = "(sounds)",
-    helperText = "Cutscene has (parentheses) to represent sounds. DYOM has a feature for playing sounds but many designers don't know about it. Anyways, the Rainbomizer mod does not support it yet",
+    helperText =
+    "Cutscene has (parentheses) to represent sounds. DYOM has a feature for playing sounds but many designers don't know about it. Anyways, the Rainbomizer mod does not support it yet",
   },
   {
     id = "cutscene_only",
@@ -698,7 +711,8 @@ local slots = {
   {
     id = "first_person_cutscene",
     string = "First-person",
-    helperText = "Also known as Point of View shot (POV) is when the DYOM camera is set to emulate the perspective of the player or a defined actor",
+    helperText =
+    "Also known as Point of View shot (POV) is when the DYOM camera is set to emulate the perspective of the player or a defined actor",
   },
   {
     id = "ground_level_shot",
@@ -718,7 +732,8 @@ local slots = {
   {
     id = "timelimit",
     string = "Timelimit",
-    helperText = "A timelimit objective starts a timer and the player needs to complete a defined set of objectives before the timer runs out",
+    helperText =
+    "A timelimit objective starts a timer and the player needs to complete a defined set of objectives before the timer runs out",
   },
   {
     id = "money_objective",
@@ -744,7 +759,8 @@ local slots = {
   {
     id = "hitman_skill",
     string = "Hitman skill",
-    helperText = 'There are three levels of skills: "Poor", "Gangster" and "Hitman". DYOM missions starts at poor skill and it cannot be changed by the mission designer',
+    helperText =
+    'There are three levels of skills: "Poor", "Gangster" and "Hitman". DYOM missions starts at poor skill and it cannot be changed by the mission designer',
   },
   {
     id = "objective_no_teleport",

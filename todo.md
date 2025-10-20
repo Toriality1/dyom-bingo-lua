@@ -1,0 +1,1 @@
+- Mission and author names have length of 50 characters. Should trim it/replace with regex for some specific detections (ie author is "Target13", mission is "DYOM", and nothing before or after those strings of text)

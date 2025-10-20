@@ -4,20 +4,34 @@ script_description("DYOM Bingo Card for GTA SA")
 
 local imgui = require("imgui")
 local encoding = require("encoding")
+local inicfg = require("inicfg")
 local data = require("bingo_data")
 local detection = require("bingo_detection")
 encoding.default = "CP1251"
 u8 = encoding.UTF8
 
-local TOGGLE_VISIBILITY_KEY = 0x42  -- B key (VK_B)
-local TOGGLE_INTERACTION_KEY = 0x49 -- I key (VK_I)
-local TOGGLE_CONFIG_KEY = 0x4D      -- M key (VK_M)
+local CONFIG_PATH = thisScript().directory .. "\\config\\dyom_bingo_settings.ini"
+
+local default_config = {
+  Keys = {
+    ToggleVisibility = 0x42,
+    ToggleInteraction = 0x49,
+    ToggleConfig = 0x4D
+  },
+}
+
+local config = inicfg.load(default_config, CONFIG_PATH)
+if not config then
+  config = default_config
+  inicfg.save(config, CONFIG_PATH)
+end
+
 local BINGO_SIZE = 5
 local CELL_SIZE = 90
 local WINDOW_WIDTH = 500
 local WINDOW_HEIGHT = 520
 local WINDOW_OFFSET = 20
-local DEBUG_MODE = false
+local DEBUG_MODE = true
 
 local slots = data.slots
 local requirements = data.requirements
@@ -270,6 +284,24 @@ function imgui.OnDrawFrame()
       generate_bingo_card()
     end
 
+    imgui.Spacing()
+
+    imgui.PushStyleColor(imgui.Col.Button, imgui.ImVec4(0.8, 0.2, 0.2, 1.0))
+    imgui.PushStyleColor(imgui.Col.ButtonHovered, imgui.ImVec4(0.9, 0.3, 0.3, 1.0))
+    imgui.PushStyleColor(imgui.Col.ButtonActive, imgui.ImVec4(0.7, 0.1, 0.1, 1.0))
+
+    if imgui.Button("Reset State & Delete Save", imgui.ImVec2(200, 40)) then
+      generate_bingo_card()
+      detection.reset()
+      printHelpString("~r~State reset! ~w~New card generated.")
+      show_config.v = false
+    end
+
+    imgui.PopStyleColor(3)
+
+    imgui.Separator()
+    imgui.TextWrapped(u8("Keybinds can be changed in settings.ini"))
+
     imgui.End()
   end
 end
@@ -314,8 +346,8 @@ function main()
     -- Auto-detect game events
     detection.update()
 
-    -- Toggle config window (M key)
-    if wasKeyPressed(TOGGLE_CONFIG_KEY) then
+    -- Toggle config window
+    if wasKeyPressed(config.Keys.ToggleConfig) then
       show_config.v = not show_config.v
       if show_config.v and not interactive_mode then
         interactive_mode = true
@@ -324,13 +356,13 @@ function main()
       end
     end
 
-    -- Toggle bingo card visibility (B key)
-    if wasKeyPressed(TOGGLE_VISIBILITY_KEY) then
+    -- Toggle bingo card visibility
+    if wasKeyPressed(config.Keys.ToggleVisibility) then
       show_window.v = not show_window.v
     end
 
-    -- Toggle interaction mode (I key)
-    if (show_window.v or show_config.v) and wasKeyPressed(TOGGLE_INTERACTION_KEY) then
+    -- Toggle interaction mode
+    if (show_window.v or show_config.v) and wasKeyPressed(config.Keys.ToggleInteraction) then
       interactive_mode = not interactive_mode
       imgui.ShowCursor = interactive_mode
       imgui.LockPlayer = interactive_mode
